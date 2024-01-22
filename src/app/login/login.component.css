@@ -1,0 +1,54 @@
+.col-lg-6{
+
+  background: -webkit-linear-gradient(to left, wheat, #1e2726,  #1e2726,wheat);
+  background: linear-gradient(to right,rgba(139, 134, 80, 0.233), whitesmoke,   #1e2726,  #1e2726);
+
+}
+.mat-icon {
+  margin-right: 8px;
+  color: #1e2726;
+
+
+}
+a{
+  color: #1e2726;
+}
+.mat-list-item {
+  height: 48px;
+  line-height: 48px;
+
+}
+
+span{
+  font-weight: lighter;
+  font-size: 30px;
+}
+
+button{
+  color: goldenrod;
+  background-color: black;
+  border-color: goldenrod;
+}
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+  font-family: Verdana, Tahoma, sans-serif;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, goldenrod, #1e2726,  #1e2726,goldenrod);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, goldenrod, rgb(236, 177, 26),   #1e2726,  #1e2726);
+  }
+
+  @media (min-width: 768px) {
+  .gradient-form {
+  height: 100vh !important;
+  }
+  }
+  @media (min-width: 769px) {
+  .gradient-custom-2 {
+  border-top-right-radius: .3rem;
+  border-bottom-right-radius: .3rem;
+  }
+  }

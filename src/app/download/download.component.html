@@ -1,0 +1,27 @@
+ <body>
+
+
+<div class="home">
+  <a mat-list-item routerLink="/accueil" routerLinkActive="active">
+    <mat-icon>home</mat-icon>
+
+    <span>back to home</span>
+  </a>
+</div>
+
+</body>
+
+
+ <div class="download-wrapper">
+  <h1 class="download-title">Confirmation de Réservation : Votre Ticket d'Entrée pour la Séance</h1>
+
+  <button type="submit" class="btn btn-primary"  (click)="downloadPDF()">Télécharger en PDF</button>
+  <div #componentContent>
+    <app-ticket></app-ticket>
+  </div>
+
+
+</div>
+
+
+

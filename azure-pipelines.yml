@@ -1,0 +1,61 @@
+pool: 
+ name: Default 
+ demands: 
+  - agent.name -equals AGENTDOCKER
+
+variables:
+  environmentName: 'frontendenv'
+  webAppName: 'CineFrontWebbApp'
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: BuildJob
+    steps:
+    - checkout: self
+    - script: |
+        npm install
+        ng build
+      displayName: 'npm install and build'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/dist/cinema-front-web'
+        ArtifactName: 'CineShow-angular-app-artifact'
+        publishLocation: 'Container'
+      displayName: 'Publish Build Artifacts'
+
+- stage: Deploy
+  displayName: 'Deploy Web App'
+  pool:
+      vmImage: 'ubuntu-20.04'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: DeploymentJob
+    environment: $(environmentName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              artifactName: 'CineShow-angular-app-artifact'
+              downloadPath: '$(System.ArtifactsDirectory)/dist' 
+          
+          - task: FtpUpload@2
+            displayName: 'Deploy Azure Web App : $(webAppName) '
+            inputs:
+              credentialsOption: 'inputs'
+              serverUrl: 'ftps://waws-prod-am2-539.ftp.azurewebsites.windows.net/site/wwwroot'
+              username: 'CineFrontWebbApp\$CineFrontWebbApp'
+              password: '4pYWZKavgCp0KejwMjftjeaA1kdnarvSxmolzih1kkka01K8ZjrFhYmHBTX8'
+              rootDirectory: '$(System.ArtifactsDirectory)/dist/CineShow-angular-app-artifact'
+              filePatterns: '**'
+              remoteDirectory: '/site/wwwroot'
+              clean: false
+              cleanContents: false
+              preservePaths: true
+              trustSSL: false
