@@ -1,7 +1,7 @@
 pool: 
  name: Default 
  demands: 
-  - agent.name -equals AGENTDOCKER
+  - agent.name -equals AGENTDOCKERTEST
 
 variables:
   environmentName: 'frontendenv'
