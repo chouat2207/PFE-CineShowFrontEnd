@@ -7,18 +7,6 @@
   position: relative;
 }
 
-/*.Landing-page {
-  background-image: url('../../assets/image/image/image.jpg');
-  background-color: #cccccc;
-  height: 700px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-
-}*/
-
-
 /*titre sur l'image d'acceuil de bienvenue*/
 .Landing-page .content {
   position: relative;
@@ -33,19 +21,10 @@
   color: white;
   font-size: 20px;
 }
-/*.hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}*/
 
 /* start slid image */
 
 .bigCon {
-  /* background-color: red; */
   display: flex;
   justify-content: center;
 }
@@ -56,7 +35,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
 }
 
 .slider{

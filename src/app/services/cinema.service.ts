@@ -18,7 +18,6 @@ export class CinemaService {
   public getVilles(){
 
     return this.http.get(this.host+"/villes");
-    // return this.http.get(this.host+"/VilleAdmin/GetVille");
 
   }
 
