@@ -1,26 +1,23 @@
+# Infos Agent
 pool: 
  name: Default 
  demands: 
-  - agent.name -equals AGENTDOCKERTEST
-
-variables:
-  environmentName: 'frontendenv'
-  webAppName: 'CineFrontWebbApp'
+  - agent.name -equals AGENTDOCKERTEST 
 
 stages:
-- stage: Build
-  displayName: Build stage
+- stage: BuildAndDeploy
+  displayName: Build and deploy stage
   jobs:
   - job: BuildJob
     steps:
-    - checkout: self
+    - checkout: self # checkout de code de project 
     - script: |
         npm install
         ng build
       displayName: 'npm install and build'
     
-    - task: FtpUpload@2
-      displayName: 'Deploy Azure Web App : $(webAppName) '
+    - task: FtpUpload@2 # c'est une tache predefinie par Azure pour delpyer le artifact via ftp
+      displayName: 'Deploy task via ftp'
       inputs:
         credentialsOption: 'inputs'
         serverUrl: 'ftps://waws-prod-am2-539.ftp.azurewebsites.windows.net/site/wwwroot'
